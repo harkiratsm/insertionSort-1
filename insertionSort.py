@@ -1,42 +1,19 @@
-from random import randint as random
-
-def randlist():
-  v = []
-  sizeOf = random(3, 20)
-  for i in range(2, sizeOf):
-    v.append(random(0, 1000))
-
-  return v
-
-def insertSort(v):
-  for i in range(1, len(v)):
-    c = i
-    
-    while v[c] < v[c-1]:
-      if c > 0:
-          v[c-1], v[c] = v[c], v[c-1]
-          c -= 1
-        
-      else:
-        break
-  
-  return(v)
-
-print("Digite 1 para escolher os numeros")
-print("Digite 2 para numeros aleatorios")
-mode = int(input())
-
-if mode == 1:
-  v=[]
-  n = int(input("Numero de termos: "))
-  for i in range (0, n, 1):
-    x = int(input())
-    v.append(x)
-    
-  print("Original: {}".format(v))
-  print("Ordenada: {}".format(insertSort(v)))
-
-elif mode == 2:
-  v = randlist()
-  print("Original: {}".format(v))
-  print("Ordenada: {}".format(insertSort(v)))
+from random import randint
+def insertion_sort(my_list):
+    for i in range (1,len(my_list)):
+        key=my_list[i]
+        l=key            #FOR STRINGS SORTING USE l=len(key)
+        j=i-1
+        while j>=0 and l < my_list[j]: #FOR STRING SORTING while j>=0 and l<=len(my_list[j])
+            my_list[j+1]=my_list[j]
+            j=j-1
+        else:
+            my_list[j+1]=key
+    return my_list
+my_list=[]
+for i in range(0,100):
+    n = random.randint(1,100)
+    my_list.append(n)
+print("BEFORE SORTING",my_list)
+insertion_sort(my_list)
+print("AFTER SORTING",my_list)
